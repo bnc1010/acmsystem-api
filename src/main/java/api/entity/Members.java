@@ -7,7 +7,7 @@ public class Members {
 
     private Integer grade;
 
-    private String class;
+    private String classname;
 
     public Integer getId() {
         return id;
@@ -33,11 +33,11 @@ public class Members {
         this.grade = grade;
     }
 
-    public String getClass() {
-        return class;
+    public String getClassname() {
+        return classname;
     }
 
-    public void setClass(String class) {
-        this.class = class;
+    public void setClassname(String classname) {
+        this.classname = classname;
     }
 }
