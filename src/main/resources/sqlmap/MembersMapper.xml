@@ -1,238 +1,82 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="api.dao.MembersMapper">
-  <resultMap id="BaseResultMap" type="api.entity.Members">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="grade" jdbcType="INTEGER" property="grade" />
-    <result column="classname" jdbcType="VARCHAR" property="classname" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="api.dao.MembersMapper" >
+  <resultMap id="BaseResultMap" type="api.entity.Members" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="INTEGER" />
+    <result column="classname" property="classname" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     id, name, grade, classname
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from members
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from members
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="api.entity.Members">
+  <insert id="insert" parameterType="api.entity.Members" >
     insert into members (id, name, grade, 
       classname)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER}, 
       #{classname,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="api.entity.Members">
+  <insert id="insertSelective" parameterType="api.entity.Members" >
     insert into members
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         id,
       </if>
-      <if test="name != null">
+      <if test="name != null" >
         name,
       </if>
-      <if test="grade != null">
+      <if test="grade != null" >
         grade,
       </if>
-      <if test="classname != null">
+      <if test="classname != null" >
         classname,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
+      <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="grade != null">
+      <if test="grade != null" >
         #{grade,jdbcType=INTEGER},
       </if>
-      <if test="classname != null">
+      <if test="classname != null" >
         #{classname,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="api.entity.Members">
+  <update id="updateByPrimaryKeySelective" parameterType="api.entity.Members" >
     update members
-    <set>
-      <if test="name != null">
+    <set >
+      <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="grade != null">
+      <if test="grade != null" >
         grade = #{grade,jdbcType=INTEGER},
       </if>
-      <if test="classname != null">
+      <if test="classname != null" >
         classname = #{classname,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="api.entity.Members">
+  <update id="updateByPrimaryKey" parameterType="api.entity.Members" >
     update members
     set name = #{name,jdbcType=VARCHAR},
       grade = #{grade,jdbcType=INTEGER},
       classname = #{classname,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="api.entity.Members">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="grade" jdbcType="INTEGER" property="grade" />
-    <result column="classname" jdbcType="VARCHAR" property="classname" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, name, grade, classname
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from members
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from members
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="api.entity.Members">
-    insert into members (id, name, grade, 
-      classname)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER}, 
-      #{classname,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="api.entity.Members">
-    insert into members
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="grade != null">
-        grade,
-      </if>
-      <if test="classname != null">
-        classname,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="grade != null">
-        #{grade,jdbcType=INTEGER},
-      </if>
-      <if test="classname != null">
-        #{classname,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="api.entity.Members">
-    update members
-    <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="grade != null">
-        grade = #{grade,jdbcType=INTEGER},
-      </if>
-      <if test="classname != null">
-        classname = #{classname,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="api.entity.Members">
-    update members
-    set name = #{name,jdbcType=VARCHAR},
-      grade = #{grade,jdbcType=INTEGER},
-      classname = #{classname,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="api.entity.Members">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="grade" jdbcType="INTEGER" property="grade" />
-    <result column="class" jdbcType="VARCHAR" property="class" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, name, grade, class
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from members
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from members
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="api.entity.Members">
-    insert into members (id, name, grade, 
-      class)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER}, 
-      #{class,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="api.entity.Members">
-    insert into members
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="grade != null">
-        grade,
-      </if>
-      <if test="class != null">
-        class,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="grade != null">
-        #{grade,jdbcType=INTEGER},
-      </if>
-      <if test="class != null">
-        #{class,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="api.entity.Members">
-    update members
-    <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="grade != null">
-        grade = #{grade,jdbcType=INTEGER},
-      </if>
-      <if test="class != null">
-        class = #{class,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="api.entity.Members">
-    update members
-    set name = #{name,jdbcType=VARCHAR},
-      grade = #{grade,jdbcType=INTEGER},
-      class = #{class,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
