@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="acmsystem:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/acmsystem_war</output-path>
+    <root id="archive" name="acmsystem_war.war">
+      <element id="artifact" artifact-name="acmsystem:war exploded" />
+    </root>
+  </artifact>
+</component>
