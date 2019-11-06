@@ -38,11 +38,22 @@
      ctype,
      ctime,
      result,
-     pic_url
+     pic_id
   }
   cname: name of the contest(eg:2019CCPC秦皇岛站)
   ctype: 0:WF,1:ICPC,2:CCPC,3:省赛,4:others(cccc,蓝桥等)
   ctime: time of the contest
   result: -x:the rank of the WF is x, 1:1st, 2:2nd, 3:3rd, 4:gold, 5:silver 6:bronze 7:iron
-  pic_url: url of photo
+  pic_id: id of photo from table picture
+  ```
+  
+  
+  picture:
+  ```
+  {
+    id,
+    path
+  }  
+  
+  path:图片存储路径
   ```
