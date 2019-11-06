@@ -1,9 +1,11 @@
 package api.service;
 
-import api.entity.HttpResult;
+import api.entity.HonorResult;
+
+import java.util.List;
 
 public interface HonorService {
 
-    HttpResult get(int year);
+    List<HonorResult> get(int year);
 
 }

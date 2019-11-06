@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="api.dao.HonorResultMapper" >
+    <resultMap id="BaseResultMap" type="api.entity.HonorResult" >
+        <id column="honor.id" property="id" jdbcType="INTEGER" />
+        <result column="team.name_cn" property="nameCn" jdbcType="VARCHAR" />
+        <result column="team.name_en" property="nameEn" jdbcType="VARCHAR" />
+        <result column="team.m_1" property="m1" jdbcType="INTEGER" />
+        <result column="team.m_2" property="m2" jdbcType="INTEGER" />
+        <result column="team.m_3" property="m3" jdbcType="INTEGER" />
+        <result column="cname" property="cname" jdbcType="VARCHAR" />
+        <result column="ctype" property="ctype" jdbcType="INTEGER" />
+        <result column="ctime" property="ctime" jdbcType="INTEGER" />
+        <result column="result" property="result" jdbcType="INTEGER" />
+        <result column="picture.path" property="path" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selectByYear" resultMap="newsInfoMap">
+        select honor.id,team.name_cn,team.name_en,team.m_1,team.m_2,team.m_3,cname,ctype,ctime,result,picture.path from honor,team,picture where
+        YEAR(ctime)= #{year,jdbcType="INTEGER"} and team.id=teamId and pic_id=picture.id;
+    </select>
+</mapper>
+
+<!--        private Integer id;-->
+<!--        private String nameCn;-->
+<!--        private String nameEn;-->
+<!--        private Integer m1;-->
+<!--        private Integer m2;-->
+<!--        private Integer m3;-->
+<!--        private String n1;-->
+<!--        private String n2;-->
+<!--        private String n3;-->
+<!--        private String cname;-->
+<!--        private Integer ctype;-->
+<!--        private Date ctime;-->
+<!--        private Integer result;-->
+<!--        private String path;-->

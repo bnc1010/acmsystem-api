@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="api.dao.HonorMapper" >
+  <resultMap id="BaseResultMap" type="api.entity.Honor" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="teamId" property="teamid" jdbcType="INTEGER" />
+    <result column="cname" property="cname" jdbcType="VARCHAR" />
+    <result column="ctype" property="ctype" jdbcType="INTEGER" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+    <result column="result" property="result" jdbcType="INTEGER" />
+    <result column="pic_id" property="picId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, teamId, cname, ctype, ctime, result, pic_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from honor
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from honor
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="api.entity.Honor" >
+    insert into honor (id, teamId, cname, 
+      ctype, ctime, result, 
+      pic_id)
+    values (#{id,jdbcType=INTEGER}, #{teamid,jdbcType=INTEGER}, #{cname,jdbcType=VARCHAR}, 
+      #{ctype,jdbcType=INTEGER}, #{ctime,jdbcType=TIMESTAMP}, #{result,jdbcType=INTEGER}, 
+      #{picId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="api.entity.Honor" >
+    insert into honor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="teamid != null" >
+        teamId,
+      </if>
+      <if test="cname != null" >
+        cname,
+      </if>
+      <if test="ctype != null" >
+        ctype,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="result != null" >
+        result,
+      </if>
+      <if test="picId != null" >
+        pic_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="teamid != null" >
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="cname != null" >
+        #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="ctype != null" >
+        #{ctype,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=INTEGER},
+      </if>
+      <if test="picId != null" >
+        #{picId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="api.entity.Honor" >
+    update honor
+    <set >
+      <if test="teamid != null" >
+        teamId = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="cname != null" >
+        cname = #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="ctype != null" >
+        ctype = #{ctype,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="result != null" >
+        result = #{result,jdbcType=INTEGER},
+      </if>
+      <if test="picId != null" >
+        pic_id = #{picId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="api.entity.Honor" >
+    update honor
+    set teamId = #{teamid,jdbcType=INTEGER},
+      cname = #{cname,jdbcType=VARCHAR},
+      ctype = #{ctype,jdbcType=INTEGER},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      result = #{result,jdbcType=INTEGER},
+      pic_id = #{picId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
