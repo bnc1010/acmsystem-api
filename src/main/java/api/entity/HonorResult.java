@@ -128,4 +128,17 @@ public class HonorResult {
     public void setPath(String path) {
         this.path = path;
     }
+
+
+    public String toString(){
+        return "" + id  + nameCn + nameEn + m1 + m2 + m3 +
+        n1 +
+        n2 +
+        n3 +
+        cname +
+        ctype +
+        ctime +
+        result +
+        path ;
+    }
 }

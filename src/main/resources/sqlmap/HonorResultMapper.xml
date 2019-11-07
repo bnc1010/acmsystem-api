@@ -3,20 +3,19 @@
 <mapper namespace="api.dao.HonorResultMapper" >
     <resultMap id="BaseResultMap" type="api.entity.HonorResult" >
         <id column="honor.id" property="id" jdbcType="INTEGER" />
-        <result column="team.name_cn" property="nameCn" jdbcType="VARCHAR" />
-        <result column="team.name_en" property="nameEn" jdbcType="VARCHAR" />
-        <result column="team.m_1" property="m1" jdbcType="INTEGER" />
-        <result column="team.m_2" property="m2" jdbcType="INTEGER" />
-        <result column="team.m_3" property="m3" jdbcType="INTEGER" />
+        <result column="name_cn" property="nameCn" jdbcType="VARCHAR" />
+        <result column="name_en" property="nameEn" jdbcType="VARCHAR" />
+        <result column="m_1" property="m1" jdbcType="INTEGER" />
+        <result column="m_2" property="m2" jdbcType="INTEGER" />
+        <result column="m_3" property="m3" jdbcType="INTEGER" />
         <result column="cname" property="cname" jdbcType="VARCHAR" />
         <result column="ctype" property="ctype" jdbcType="INTEGER" />
         <result column="ctime" property="ctime" jdbcType="INTEGER" />
         <result column="result" property="result" jdbcType="INTEGER" />
         <result column="picture.path" property="path" jdbcType="VARCHAR" />
     </resultMap>
-    <select id="selectByYear" resultMap="newsInfoMap">
-        select honor.id,team.name_cn,team.name_en,team.m_1,team.m_2,team.m_3,cname,ctype,ctime,result,picture.path from honor,team,picture where
-        YEAR(ctime)= #{year,jdbcType="INTEGER"} and team.id=teamId and pic_id=picture.id;
+    <select id="selectByYear" resultMap="BaseResultMap">
+        select honor.id,name_cn,name_en,m_1,m_2,m_3,cname,ctype,ctime,result,picture.path from honor,team,picture where YEAR(ctime)= #{year,jdbcType=INTEGER} and team.id=teamId and pic_id=picture.id;
     </select>
 </mapper>
 
