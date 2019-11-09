@@ -57,3 +57,11 @@
   
   path:图片存储路径
   ```
+
+
+
+参考：
+
+https://github.com/OneWayTech/vue-auth-solution vue权限控制
+https://blog.csdn.net/GG_and_DD/article/details/78205533 shiro
+
