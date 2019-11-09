@@ -2,7 +2,7 @@ package api.entity;
 
 import java.util.Date;
 
-public class HonorResult {
+public class HonorResult{
     private Integer id;
     private String nameCn;
     private String nameEn;
@@ -14,7 +14,7 @@ public class HonorResult {
     private String n3;
     private String cname;
     private Integer ctype;
-    private Date ctime;
+    private String ctime;
     private Integer result;
     private String path;
     public Integer getId() {
@@ -41,11 +41,11 @@ public class HonorResult {
         this.ctype = ctype;
     }
 
-    public Date getCtime() {
+    public String getCtime() {
         return ctime;
     }
 
-    public void setCtime(Date ctime) {
+    public void setCtime(String ctime) {
         this.ctime = ctime;
     }
 

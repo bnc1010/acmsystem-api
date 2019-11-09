@@ -15,21 +15,6 @@
         <result column="picture.path" property="path" jdbcType="VARCHAR" />
     </resultMap>
     <select id="selectByYear" resultMap="BaseResultMap">
-        select honor.id,name_cn,name_en,m_1,m_2,m_3,cname,ctype,ctime,result,picture.path from honor,team,picture where YEAR(ctime)= #{year,jdbcType=INTEGER} and team.id=teamId and pic_id=picture.id;
+        select honor.id,name_cn,name_en,m_1,m_2,m_3,cname,ctype,date(ctime) as ctime,result,picture.path from honor,team,picture where YEAR(ctime)= #{year,jdbcType=INTEGER} and team.id=teamId and pic_id=picture.id order by ctime,cname asc;
     </select>
 </mapper>
-
-<!--        private Integer id;-->
-<!--        private String nameCn;-->
-<!--        private String nameEn;-->
-<!--        private Integer m1;-->
-<!--        private Integer m2;-->
-<!--        private Integer m3;-->
-<!--        private String n1;-->
-<!--        private String n2;-->
-<!--        private String n3;-->
-<!--        private String cname;-->
-<!--        private Integer ctype;-->
-<!--        private Date ctime;-->
-<!--        private Integer result;-->
-<!--        private String path;-->
