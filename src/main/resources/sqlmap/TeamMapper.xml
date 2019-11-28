@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="api.dao.TeamMapper" >
-  <resultMap id="BaseResultMap" type="api.entity.Team" >
+  <resultMap id="BaseResultMap" type="api.entity.db.Team" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name_cn" property="nameCn" jdbcType="VARCHAR" />
     <result column="name_en" property="nameEn" jdbcType="VARCHAR" />
@@ -22,13 +22,13 @@
     delete from team
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="api.entity.Team" >
+  <insert id="insert" parameterType="api.entity.db.Team" >
     insert into team (id, name_cn, name_en, 
       m_1, m_2, m_3)
     values (#{id,jdbcType=INTEGER}, #{nameCn,jdbcType=VARCHAR}, #{nameEn,jdbcType=VARCHAR}, 
       #{m1,jdbcType=INTEGER}, #{m2,jdbcType=INTEGER}, #{m3,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="api.entity.Team" >
+  <insert id="insertSelective" parameterType="api.entity.db.Team" >
     insert into team
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -71,7 +71,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="api.entity.Team" >
+  <update id="updateByPrimaryKeySelective" parameterType="api.entity.db.Team" >
     update team
     <set >
       <if test="nameCn != null" >
@@ -92,7 +92,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="api.entity.Team" >
+  <update id="updateByPrimaryKey" parameterType="api.entity.db.Team" >
     update team
     set name_cn = #{nameCn,jdbcType=VARCHAR},
       name_en = #{nameEn,jdbcType=VARCHAR},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="api.dao.MembersMapper" >
-  <resultMap id="BaseResultMap" type="api.entity.Members" >
+  <resultMap id="BaseResultMap" type="api.entity.db.Members" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="grade" property="grade" jdbcType="INTEGER" />
@@ -20,13 +20,13 @@
     delete from members
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="api.entity.Members" >
+  <insert id="insert" parameterType="api.entity.db.Members" >
     insert into members (id, name, grade, 
       classname)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER}, 
       #{classname,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="api.entity.Members" >
+  <insert id="insertSelective" parameterType="api.entity.db.Members" >
     insert into members
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="api.entity.Members" >
+  <update id="updateByPrimaryKeySelective" parameterType="api.entity.db.Members" >
     update members
     <set >
       <if test="name != null" >
@@ -72,7 +72,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="api.entity.Members" >
+  <update id="updateByPrimaryKey" parameterType="api.entity.db.Members" >
     update members
     set name = #{name,jdbcType=VARCHAR},
       grade = #{grade,jdbcType=INTEGER},

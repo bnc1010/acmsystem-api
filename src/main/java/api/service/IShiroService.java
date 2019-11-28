@@ -1,11 +1,11 @@
 package api.service;
 
-import api.entity.Permission;
-import api.entity.User;
+import api.entity.db.Permission;
+import api.entity.md.User;
 
 import java.util.List;
 
-public interface ShiroService {
+public interface IShiroService {
 
     /**
      * 根据账号获取账号密码

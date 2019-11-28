@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.artisan.dao.FileMapper" >
+    <resultMap id="BaseResultMap" type="com.artisan.pojo.db.LogName" >
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" property="lId" jdbcType="INTEGER" />
+        <result column="log_name" property="logName" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="getLogNames" resultMap="BaseResultMap">
+    select * from log_name
+  </select>
+</mapper>

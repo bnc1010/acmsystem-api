@@ -10,15 +10,15 @@
 
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager" /> <!--加载管理器-->
-        <property name="loginUrl" value="/user/login" />    <!--没有登录的时候，跳转到这个页面-->
-        <property name="unauthorizedUrl" value="/user/nopermission" /> <!--当没有权限的时候，跳转到这个url-->
+        <property name="loginUrl" value="/home/login" />    <!--没有登录的时候，跳转到这个页面-->
+        <property name="unauthorizedUrl" value="/user/noPermission" /> <!--当没有权限的时候，跳转到这个url-->
 
         <property name="filterChainDefinitions">
             <value>
-                /user/login = anon <!--可以不需要登录-->
-                /user/readName = authc, perms[/readName]  <!-- perms 表示需要该权限才能访问的页面 -->
-                /user/readData = authc, perms[/readData]
-                /user/* = authc <!-- authc 表示需要认证才能访问的页面 -->
+                /home/login = anon <!--可以不需要登录-->
+<!--                /user/readName = authc, perms[/readName]  &lt;!&ndash; perms 表示需要该权限才能访问的页面 &ndash;&gt;-->
+<!--                /user/readData = authc, perms[/readData]-->
+<!--                /user/* = authc &lt;!&ndash; authc 表示需要认证才能访问的页面 &ndash;&gt;-->
             </value>
         </property>
     </bean>

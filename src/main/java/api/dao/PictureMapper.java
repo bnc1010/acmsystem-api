@@ -1,6 +1,6 @@
 package api.dao;
 
-import api.entity.Picture;
+import api.entity.db.Picture;
 
 public interface PictureMapper {
     int deleteByPrimaryKey(Integer id);

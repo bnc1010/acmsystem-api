@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="api.dao.PictureMapper">
-  <resultMap id="BaseResultMap" type="api.entity.Picture">
+  <resultMap id="BaseResultMap" type="api.entity.db.Picture">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="path" jdbcType="VARCHAR" property="path" />
   </resultMap>
@@ -18,11 +18,11 @@
     delete from picture
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="api.entity.Picture">
+  <insert id="insert" parameterType="api.entity.db.Picture">
     insert into picture (id, path)
     values (#{id,jdbcType=INTEGER}, #{path,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="api.entity.Picture">
+  <insert id="insertSelective" parameterType="api.entity.db.Picture">
     insert into picture
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -41,7 +41,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="api.entity.Picture">
+  <update id="updateByPrimaryKeySelective" parameterType="api.entity.db.Picture">
     update picture
     <set>
       <if test="path != null">
@@ -50,7 +50,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="api.entity.Picture">
+  <update id="updateByPrimaryKey" parameterType="api.entity.db.Picture">
     update picture
     set path = #{path,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

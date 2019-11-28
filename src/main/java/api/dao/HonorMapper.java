@@ -1,6 +1,6 @@
 package api.dao;
 
-import api.entity.Honor;
+import api.entity.db.Honor;
 
 import java.util.ArrayList;
 

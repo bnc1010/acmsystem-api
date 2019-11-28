@@ -1,4 +1,4 @@
-package api.entity;
+package api.entity.db;
 
 public class User {
     private int id;

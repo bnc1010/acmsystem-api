@@ -1,10 +1,10 @@
 package api.service.serviceImpl;
 
 import api.dao.*;
-import api.entity.HonorResult;
-import api.entity.Members;
-import api.service.HonorService;
+import api.entity.db.HonorResult;
+import api.entity.db.Members;
 
+import api.service.IHonorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class HonorServiceImpl implements HonorService {
+public class HonorServiceImpl implements IHonorService {
 
     @Autowired
     HonorResultMapper honorResultMapper;

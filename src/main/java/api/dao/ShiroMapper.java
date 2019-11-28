@@ -1,7 +1,7 @@
 package api.dao;
 
-import api.entity.Permission;
-import api.entity.User;
+import api.entity.db.Permission;
+import api.entity.md.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -1,9 +1,9 @@
 package api.service.serviceImpl;
 
 import api.dao.ShiroMapper;
-import api.entity.Permission;
-import api.entity.User;
-import api.service.ShiroService;
+import api.entity.db.Permission;
+import api.entity.md.User;
+import api.service.IShiroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service("shiroService")
-public class ShiroServiceImpl implements ShiroService {
+public class ShiroServiceImpl implements IShiroService {
 
     @Autowired
     private ShiroMapper shiroMapper;

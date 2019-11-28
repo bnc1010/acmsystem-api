@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="api.dao.HonorMapper" >
-  <resultMap id="BaseResultMap" type="api.entity.Honor" >
+  <resultMap id="BaseResultMap" type="api.entity.db.Honor" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="teamId" property="teamid" jdbcType="INTEGER" />
     <result column="cname" property="cname" jdbcType="VARCHAR" />
@@ -23,7 +23,7 @@
     delete from honor
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="api.entity.Honor" >
+  <insert id="insert" parameterType="api.entity.db.Honor" >
     insert into honor (id, teamId, cname, 
       ctype, ctime, result, 
       pic_id)
@@ -31,7 +31,7 @@
       #{ctype,jdbcType=INTEGER}, #{ctime,jdbcType=TIMESTAMP}, #{result,jdbcType=INTEGER}, 
       #{picId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="api.entity.Honor" >
+  <insert id="insertSelective" parameterType="api.entity.db.Honor" >
     insert into honor
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="api.entity.Honor" >
+  <update id="updateByPrimaryKeySelective" parameterType="api.entity.db.Honor" >
     update honor
     <set >
       <if test="teamid != null" >
@@ -104,7 +104,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="api.entity.Honor" >
+  <update id="updateByPrimaryKey" parameterType="api.entity.db.Honor" >
     update honor
     set teamId = #{teamid,jdbcType=INTEGER},
       cname = #{cname,jdbcType=VARCHAR},

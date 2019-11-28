@@ -1,4 +1,4 @@
-package api.entity;
+package api.entity.db;
 
 import org.springframework.stereotype.Component;
 

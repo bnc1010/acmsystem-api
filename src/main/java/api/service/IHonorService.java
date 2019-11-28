@@ -1,9 +1,9 @@
 package api.service;
 
-import api.entity.HonorResult;
+import api.entity.db.HonorResult;
 
 import java.util.List;
 
-public interface HonorService {
+public interface IHonorService {
     List<HonorResult> get(int year);
 }

@@ -1,6 +1,6 @@
 package api.dao;
 
-import api.entity.Members;
+import api.entity.db.Members;
 
 public interface MembersMapper {
     int deleteByPrimaryKey(Integer id);

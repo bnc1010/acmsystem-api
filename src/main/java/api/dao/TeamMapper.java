@@ -1,6 +1,6 @@
 package api.dao;
 
-import api.entity.Team;
+import api.entity.db.Team;
 
 public interface TeamMapper {
     int deleteByPrimaryKey(Integer id);
