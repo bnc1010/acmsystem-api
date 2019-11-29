@@ -16,6 +16,92 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `picture`
+--
+
+DROP TABLE IF EXISTS `picture`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `picture` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `path` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `picture`
+--
+
+LOCK TABLES `picture` WRITE;
+/*!40000 ALTER TABLE `picture` DISABLE KEYS */;
+/*!40000 ALTER TABLE `picture` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
+--
+-- Table structure for table `members`
+--
+
+DROP TABLE IF EXISTS `members`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `members` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) DEFAULT NULL,
+  `grade` int(11) DEFAULT NULL,
+  `classname` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `members`
+--
+
+LOCK TABLES `members` WRITE;
+/*!40000 ALTER TABLE `members` DISABLE KEYS */;
+/*!40000 ALTER TABLE `members` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
+--
+-- Table structure for table `team`
+--
+
+DROP TABLE IF EXISTS `team`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `team` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name_cn` varchar(50) DEFAULT NULL,
+  `name_en` varchar(50) DEFAULT NULL,
+  `m_1` int(11) DEFAULT NULL,
+  `m_2` int(11) DEFAULT NULL,
+  `m_3` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `m_1` (`m_1`),
+  KEY `m_2` (`m_2`),
+  KEY `m_3` (`m_3`),
+  CONSTRAINT `team_ibfk_1` FOREIGN KEY (`m_1`) REFERENCES `members` (`id`),
+  CONSTRAINT `team_ibfk_2` FOREIGN KEY (`m_2`) REFERENCES `members` (`id`),
+  CONSTRAINT `team_ibfk_3` FOREIGN KEY (`m_3`) REFERENCES `members` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `team`
+--
+
+LOCK TABLES `team` WRITE;
+/*!40000 ALTER TABLE `team` DISABLE KEYS */;
+/*!40000 ALTER TABLE `team` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+--
 -- Table structure for table `file`
 --
 
@@ -86,7 +172,7 @@ CREATE TABLE `honor` (
   KEY `pic_id` (`pic_id`),
   CONSTRAINT `honor_ibfk_1` FOREIGN KEY (`teamId`) REFERENCES `team` (`id`),
   CONSTRAINT `honor_ibfk_2` FOREIGN KEY (`pic_id`) REFERENCES `picture` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,30 +184,6 @@ LOCK TABLES `honor` WRITE;
 /*!40000 ALTER TABLE `honor` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `members`
---
-
-DROP TABLE IF EXISTS `members`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `members` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) DEFAULT NULL,
-  `grade` int(11) DEFAULT NULL,
-  `classname` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `members`
---
-
-LOCK TABLES `members` WRITE;
-/*!40000 ALTER TABLE `members` DISABLE KEYS */;
-/*!40000 ALTER TABLE `members` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `menu`
@@ -303,28 +365,7 @@ LOCK TABLES `permission_operation` WRITE;
 /*!40000 ALTER TABLE `permission_operation` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `picture`
---
 
-DROP TABLE IF EXISTS `picture`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `picture` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `path` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `picture`
---
-
-LOCK TABLES `picture` WRITE;
-/*!40000 ALTER TABLE `picture` DISABLE KEYS */;
-/*!40000 ALTER TABLE `picture` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `role`
@@ -377,38 +418,7 @@ LOCK TABLES `role_permission` WRITE;
 /*!40000 ALTER TABLE `role_permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `team`
---
 
-DROP TABLE IF EXISTS `team`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `team` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name_cn` varchar(50) DEFAULT NULL,
-  `name_en` varchar(50) DEFAULT NULL,
-  `m_1` int(11) DEFAULT NULL,
-  `m_2` int(11) DEFAULT NULL,
-  `m_3` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `m_1` (`m_1`),
-  KEY `m_2` (`m_2`),
-  KEY `m_3` (`m_3`),
-  CONSTRAINT `team_ibfk_1` FOREIGN KEY (`m_1`) REFERENCES `members` (`id`),
-  CONSTRAINT `team_ibfk_2` FOREIGN KEY (`m_2`) REFERENCES `members` (`id`),
-  CONSTRAINT `team_ibfk_3` FOREIGN KEY (`m_3`) REFERENCES `members` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `team`
---
-
-LOCK TABLES `team` WRITE;
-/*!40000 ALTER TABLE `team` DISABLE KEYS */;
-/*!40000 ALTER TABLE `team` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `user`

@@ -1,6 +1,6 @@
 package api.service.serviceImpl;
 
-import api.constant.Constants;
+import api.common.constant.constant.Constants;
 import api.entity.md.TokenModel;
 import api.helper.Base64Util;
 import api.helper.StringUtils;

@@ -21,6 +21,8 @@
 
     <!-- Configures the @Controller programming model
     <mvc:annotation-driven />-->
+    <!-- 引入配置文件 -->
+
     <!-- ②：启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <property name="messageConverters">
@@ -47,9 +49,6 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
-
-
-
     <!-- 配置dbcp数据库连接池 -->
     <!-- <context:property-placeholder location="classpath:db.properties"/> -->
     <!--数据库配置 -->
@@ -71,35 +70,6 @@
         <property name="maxActive" value="100"/>
         <property name="maxIdle" value="5"/>
         <property name="maxWait" value="80000"/>
-    </bean>
-
-    <!-- 配置事务管理器 -->
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
-
-    <!-- 拦截器 -->
-    <mvc:interceptors>
-        <!-- 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 -->
-        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
-    </mvc:interceptors>
-    <!-- 定义无Controller的path<->view直接映射 -->
-    <mvc:view-controller path="/" view-name="redirect:/" />
-
-    <!-- 配置会话工厂SqlSessionFactory -->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <!-- 数据源 -->
-        <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:sqlmap/*Mapper.xml"/>
-        <property name="typeAliasesPackage" value="api.entity" />
-    </bean>
-
-    <!-- 在spring容器中配置mapper的扫描器产生的动态代理对象在spring的容器中自动注册，bean的id就是mapper类名（首字母小写）-->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <!-- 指定扫描包的路径，就是mapper接口的路径，多个包中间以 半角逗号隔开   -->
-        <property name="basePackage" value="api.dao"/>
-        <!-- 配置sqlSessionFactoryBeanName -->
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
     <!--Redis配置-->
@@ -137,5 +107,33 @@
         </property>
     </bean>
 
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!-- 拦截器 -->
+    <mvc:interceptors>
+        <!-- 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 -->
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+    </mvc:interceptors>
+    <!-- 定义无Controller的path<->view直接映射 -->
+    <mvc:view-controller path="/" view-name="redirect:/" />
+
+    <!-- 配置会话工厂SqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath:sqlmap/*Mapper.xml"/>
+        <property name="typeAliasesPackage" value="api.entity.db" />
+    </bean>
+
+    <!-- 在spring容器中配置mapper的扫描器产生的动态代理对象在spring的容器中自动注册，bean的id就是mapper类名（首字母小写）-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 指定扫描包的路径，就是mapper接口的路径，多个包中间以 半角逗号隔开   -->
+        <property name="basePackage" value="api.dao"/>
+        <!-- 配置sqlSessionFactoryBeanName -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
 </beans>
 
